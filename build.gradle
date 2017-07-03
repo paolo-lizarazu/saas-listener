@@ -1,0 +1,28 @@
+group 'com.saasforge.keycloack'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main.compileClasspath += configurations.provided
+    test.compileClasspath += configurations.provided
+    test.runtimeClasspath += configurations.provided
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.keycloak', name: 'keycloak-core', version: '3.1.0.Final'
+    provided group: 'org.keycloak', name: 'keycloak-server-spi', version: '3.1.0.Final'
+    provided group: 'org.keycloak', name: 'keycloak-server-spi-private', version: '3.1.0.Final'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
